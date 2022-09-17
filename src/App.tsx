@@ -7,6 +7,7 @@ import PersonList from './components/PersonList';
 import Status from './components/Status';
 import Event from './components/Event'
 import Style from './components/Style';
+import Loggedin from './components/state/Loggedin';
 function App() {
 
   const personName = {
@@ -22,6 +23,9 @@ function App() {
 
   return (
     <div className="App">
+
+
+
       {/* <Greet name="zhangsan" messageCount={110} isLoggedIn={false} /> */}
       <Greet name="zhangsan" messageCount={110} isLoggedIn={true} />
       <Person name={personName} />
@@ -35,6 +39,9 @@ function App() {
 
       <hr />
       <Style />
+
+      <hr />
+      <Loggedin />
     </div>
   );
 }

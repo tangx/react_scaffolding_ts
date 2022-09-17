@@ -21,7 +21,7 @@ export default function Status(props: StatusProps) {
   return (
     <div>
       <hr />
-      <h2 style={{ color: 'blue' }}>Status: 状态传递</h2>
+      <h2 style={{ color: 'blue' }}>4. Status: 类型约束 与 ReactNode 节点传递 </h2>
       <h4>Status: - {message}</h4>
       <Heading>Placeholder text from status</Heading>
       <Oscar>

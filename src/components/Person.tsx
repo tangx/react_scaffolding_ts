@@ -10,7 +10,7 @@ export default function Person(props: PersonProps) {
   return (
     <div>
       <hr />
-      <h2 style={{ color: 'blue' }}>Person: Object Props</h2>
+      <h2 style={{ color: 'blue' }}>2. Person: Object Props 对象传递</h2>
       <h4>{name.first} {name.last}</h4>
     </div>
   )

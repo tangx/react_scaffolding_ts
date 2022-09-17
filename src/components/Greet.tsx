@@ -10,13 +10,17 @@ export default function Greet(props: GreetProps) {
   const { messageCount = 0 } = props
   return (
 
-    <h2>
-      {
-        props.isLoggedIn
-          ? `Welcome ${props.name}! You have ${messageCount} unread messages.`
-          : 'Welcome Guest!'
-      }
-    </h2 >
+    <div>
+      <h2>1. 简单 props 传递</h2>
+      <div>
+
+        {
+          props.isLoggedIn
+            ? `Welcome ${props.name}! You have ${messageCount} unread messages.`
+            : 'Welcome Guest!'
+        }
+      </div >
+    </div>
 
   )
 }

@@ -11,7 +11,7 @@ export default function PersonList({ names }: PersonListProps) {
   return (
     <div>
       <hr />
-      <h2 style={{ color: 'blue' }}>PersonList: List Props</h2>
+      <h2 style={{ color: 'blue' }}>3. PersonList: List Props 数组传递</h2>
       {
         // 这里使用 index 作为 key 是不规范的
         names.map((name, index) => {

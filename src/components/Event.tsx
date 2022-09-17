@@ -6,7 +6,7 @@ export default function Event() {
   return (
     <div>
       <hr /><hr />
-      <h2>Event</h2>
+      <h2>5. Event: 事件传递</h2>
       <Button handleClick={(event, id) => {
         console.log('Button Click', event, "id=", id);
       }}

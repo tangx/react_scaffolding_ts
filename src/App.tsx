@@ -21,7 +21,8 @@ function App() {
 
   return (
     <div className="App">
-      <Greet name="zhangsan" messageCount={110} isLoggedIn={false} />
+      {/* <Greet name="zhangsan" messageCount={110} isLoggedIn={false} /> */}
+      <Greet name="zhangsan" messageCount={110} isLoggedIn={true} />
       <Person name={personName} />
       <PersonList names={nameList} />
 

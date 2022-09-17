@@ -28,6 +28,7 @@ export default function Input(props: InputProps) {
   return (
     <div>
       <input type="text" value={props.value}
+        placeholder='输入内容， 回车打印'
         // onChange={handleInputChange}
         onKeyUp={handleOnKeyUp}
       />

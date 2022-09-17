@@ -1,6 +1,6 @@
 import React from 'react'
-import Heading from './Heading'
-import Oscar from './Oscar'
+import Heading from './status/Heading'
+import Oscar from './status/Oscar'
 
 
 type StatusProps = {

@@ -12,11 +12,11 @@ export default function PersonList({ names }: PersonListProps) {
     <div>
       <hr />
       <h2 style={{ color: 'blue' }}>PersonList: List Props</h2>
-
       {
-        names.map(name => {
+        // 这里使用 index 作为 key 是不规范的
+        names.map((name, index) => {
           return (
-            <h4>{name.first} {name.last}</h4>
+            <h4 key={index}>{name.first} {name.last}</h4>
           )
         })
       }

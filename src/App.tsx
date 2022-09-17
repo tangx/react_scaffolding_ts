@@ -5,7 +5,7 @@ import Greet from './components/Greet';
 import Person from './components/Person';
 import PersonList from './components/PersonList';
 import Status from './components/Status';
-
+import Event from './components/Event'
 function App() {
 
   const personName = {
@@ -28,6 +28,9 @@ function App() {
 
       <hr />
       <Status status='loading' />
+
+      <hr />
+      <Event />
     </div>
   );
 }

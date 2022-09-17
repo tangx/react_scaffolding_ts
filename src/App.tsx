@@ -6,6 +6,7 @@ import Person from './components/Person';
 import PersonList from './components/PersonList';
 import Status from './components/Status';
 import Event from './components/Event'
+import Style from './components/Style';
 function App() {
 
   const personName = {
@@ -31,6 +32,9 @@ function App() {
 
       <hr />
       <Event />
+
+      <hr />
+      <Style />
     </div>
   );
 }

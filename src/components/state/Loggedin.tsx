@@ -17,8 +17,7 @@ export default function Loggedin() {
   }
   return (
     <div>
-      <hr /><hr />
-      <h2>7. State: 使用 useState 初始化状态</h2>
+      <h3>7.1 useState: useState 自动类型推断</h3>
       <button onClick={handleLogin}>Login</button>
       <button onClick={handleLogout}>Logout</button>
       <div>User is {isLoggedIn ? 'logged in' : 'logged out'}</div>

@@ -1,27 +1,20 @@
 import React from 'react'
-import { Name } from './Person'
+import { Name } from './Person.types'
 
 type PersonListProps = {
-  /* 直接写法 */
-  // names: {
-  //   first: string
-  //   last: string
-  // }[]
-
-  /** 引用写法 */
   names: Name[]
 }
 
 
-
-export default function PersonList(props: PersonListProps) {
+/** 在置顶形式参数时， 直接解构 */
+export default function PersonList({ names }: PersonListProps) {
   return (
     <div>
       <hr />
       <h2 style={{ color: 'blue' }}>PersonList: List Props</h2>
 
       {
-        props.names.map(name => {
+        names.map(name => {
           return (
             <h4>{name.first} {name.last}</h4>
           )

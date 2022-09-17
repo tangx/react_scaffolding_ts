@@ -1,15 +1,7 @@
 import React from 'react'
+import { Name } from './Person.types' // 引入 types 文件
 
-export type Name = {
-  first: string
-  last: string
-}
 type PersonProps = {
-  // name: {
-  //   first: string
-  //   last: string
-  // }
-
   name: Name
 }
 

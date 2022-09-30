@@ -1,3 +1,5 @@
+import { changeAdminName, IAdminAction } from '../actions/admin'
+import { EnumAdminAction } from '../constant'
 
 export interface IAdmin {
   id: string
@@ -17,8 +19,14 @@ const initAdminState: IAdminState = {
   }
 }
 
-const admin = (state: IAdminState = initAdminState, action: any) => {
-  return state
+const admin = (preState: IAdminState = initAdminState, action: IAdminAction) => {
+  // return state
+  switch (action.type) {
+    case EnumAdminAction.CHANGE_NAME:
+      return { admin: { ...action.payload } }
+    default:
+      return preState
+  }
 }
 
 export default admin

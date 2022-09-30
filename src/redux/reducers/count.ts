@@ -7,7 +7,7 @@ export enum EnumCount {
 }
 
 
-type ICount = number
+export type ICount = number
 
 interface ICountAtcion {
   type: EnumCount,

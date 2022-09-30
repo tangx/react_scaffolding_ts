@@ -3,13 +3,13 @@ import { combineReducers } from "redux";
 
 // 导入各个组件的 reducer
 import user from './user'
-import admin from './admin'
+import adminReducer from './admin'
 
 
 // 导出所有 reducers
 const reducers = combineReducers({
   user,
-  admin,
+  admin: adminReducer,
 })
 
 export default reducers

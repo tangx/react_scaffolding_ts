@@ -19,8 +19,7 @@ const initAdminState: IAdminState = {
   }
 }
 
-const admin = (preState: IAdminState = initAdminState, action: IAdminAction) => {
-  // return state
+const adminReducer = (preState: IAdminState = initAdminState, action: IAdminAction) => {
   switch (action.type) {
     case EnumAdminAction.CHANGE_NAME:
       return { admin: { ...action.payload } }
@@ -29,4 +28,4 @@ const admin = (preState: IAdminState = initAdminState, action: IAdminAction) => 
   }
 }
 
-export default admin
+export default adminReducer

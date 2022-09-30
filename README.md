@@ -99,3 +99,115 @@ class ClassConnect extends Component<IProps> {
 1. 使用 `interface IProps{}` 定义 props 类型字段参数。 
 2. 在 `class ClassConnect extends Component<IProps> {}` 使用 props 类型。
 
+### 4. 使用 action 并修改 redux 数据
+
+#### 4.1 在 `constant.ts` 中创建 action type 枚举常量
+
+action type 必须是唯一的， 可以通过 **枚举常量** 实现。
+
+```ts
+// src/store/constant.ts
+export enum EnumAdminAction {
+  INIT,
+  CHANGE_NAME,
+}
+```
+
+#### 4.2 在 `action/admin.tx` 中创建 actions 方法
+
+在 action 方法中， 需要返回一个一个对象， 对象包含
+
+1. `type`: 为枚举类型的值
+2. `payload`: 传递给 reducer 加工的数据
+
+```ts
+// src/store/actions/admin.ts
+import { EnumAdminAction } from "../constant";
+import { IAdmin } from "../reducers/admin";
+
+export type IAdminAction = {
+  type: EnumAdminAction,
+  payload: any,
+}
+
+export function changeAdminName(admin: IAdmin): IAdminAction {
+  return {
+    type: EnumAdminAction.CHANGE_NAME,
+    payload: admin,
+  }
+}
+```
+
+#### 4.3 在 `reducers/admin.ts` 中捕获 action
+
+reducer 函数支持两个参数, `(preState, action)`
+
+1. `preState`: 为 store 中保存的状态值。 
+    1. 第一次初始化， 可以传入默认值 `initAdminState`
+2. `action`: 是一个 Object 对象， 包含 type 和 payload 两个字段。
+    1. `type` 为 `constant.ts` 中定义的枚举常量，全局唯一。
+    2. `preload` 为实际数据。
+3. 使用 `switch` 选择分支。
+4. 分支内容为简单函数体， 
+    1. 返回一个 **全新对象**
+    2. 不能直接对 preState 进行修改， 否则 redux 进行 **浅比较** 将无法更新数据。
+
+```ts
+// src/store/reducers/admin.ts
+
+const adminReducer = (preState: IAdminState = initAdminState, action: IAdminAction) => {
+  switch (action.type) {
+    case EnumAdminAction.CHANGE_NAME:
+      return { admin: { ...action.payload } }
+    default:
+      return preState
+  }
+}
+
+export default adminReducer
+```
+
+#### 4.4 在 components 中的 `Container组件` 中传递 action 函数
+
+`dispatchProps` 可以是一个 **Object对象**,  对象内容就是导入的 **各个函数**。
+
+对象值 `key = value` ， 可以简写。
+
+```ts
+import { changeAdminName, IAdminAction } from '../store/actions/admin'
+
+// dispatchProps 将 action 列表作为 props 传递给 UI 组件
+const dispatchProps = {
+  changeAdminName
+}
+
+export default connect(stateProps, dispatchProps)(ClassConnect)
+```
+
+
+#### 4.5 在 components 中的 `UI组件` 中使用 action 函数
+ 
+传入 action 的都在 **UI组件** 的 **props** 中。
+
+如果想要调用， 需要在 `IProps` 接口中补充定义字段。
+
+```ts
+interface IProps {
+  admin: IAdmin,
+  user: IUser,
+  changeAdminName: (admin: IAdmin) => IAdminAction,
+}
+```
+
+之后，就是常规的 props 用法之一， **从父组件传递函数给子组件调用**。
+
+```ts
+  // 修改管理员名字
+  changeAdminName = () => {
+    const { admin } = this.props
+
+    this.props.changeAdminName({
+      ...admin, name: admin.name + "1"
+    })
+  }
+```

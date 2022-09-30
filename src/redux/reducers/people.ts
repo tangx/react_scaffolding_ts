@@ -21,7 +21,6 @@ const initState: IPeopleState = [
   }
 ]
 export default function people(preState: IPeopleState = initState, action: IPeopleAction) {
-  console.log(preState);
 
   switch (action.type) {
     case EnumPeopleActionType.ADD_USER:

@@ -124,11 +124,13 @@ class ClassConnect extends Component<IProps> {
 
 action type 必须是唯一的， 可以通过 **枚举常量** 实现。
 
+> enum 一定要使用 **字符串** 枚举， 否则默认数字 (0,1,2,3,...) 的枚举值将在多个组件中造成冲突。 
+
 ```ts
 // src/store/constant.ts
 export enum EnumAdminAction {
-  INIT,
-  CHANGE_NAME,
+  INIT="INIT",
+  CHANGE_NAME="CHANGE_NAME",
 }
 ```
 

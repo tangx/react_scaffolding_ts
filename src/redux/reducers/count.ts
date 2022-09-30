@@ -1,11 +1,6 @@
 
 
-
-export enum EnumCount {
-  INCREMENT,
-  DECREMENT,
-}
-
+import { EnumCount } from "../actions/count"
 
 export type ICount = number
 

@@ -8,6 +8,11 @@ export interface IPerson {
 
 export type IPeopleState = IPerson[]
 
+interface IPeopleAction {
+  type: EnumPeopleActionType,
+  data: IPerson,
+}
+
 const initState: IPeopleState = [
   {
     id: "user111",
@@ -15,14 +20,9 @@ const initState: IPeopleState = [
     age: 18,
   }
 ]
-
-
-interface IPeopleAction {
-  type: EnumPeopleActionType,
-  data: IPerson,
-}
-
 export default function people(preState: IPeopleState = initState, action: IPeopleAction) {
+  console.log(preState);
+
   switch (action.type) {
     case EnumPeopleActionType.ADD_USER:
       return [action.data, ...preState]

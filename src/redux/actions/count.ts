@@ -1,7 +1,7 @@
 
 
 
-import { EnumCount, ICount } from '../reducers/count'
+import { ICount } from '../reducers/count'
 import { Dispatch } from 'redux'
 
 // 同步 action 返回值
@@ -9,6 +9,13 @@ export type ICountAction = {
   type: EnumCount,
   data: ICount,
 }
+
+export enum EnumCount {
+  INCREMENT = "INCREMENT",
+  DECREMENT = "DECREMENT",
+}
+
+
 
 // 同步action， 返回一个对象
 export function increment(data: ICount): ICountAction {

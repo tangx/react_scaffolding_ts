@@ -7,10 +7,14 @@ import { nanoid } from 'nanoid'
 import { ICount } from '../../redux/reducers/count'
 import { IPeopleState, IPerson } from '../../redux/reducers/people'
 
+import { addPerson } from '../../redux/actions/people'
+
 
 interface PeopleProps {
   count: ICount,
   people: IPeopleState,
+
+  addPerson: (person: IPerson) => void,
 }
 
 function People(props: PeopleProps) {
@@ -29,8 +33,7 @@ function People(props: PeopleProps) {
       age,
     }
 
-    // console.log(p);
-
+    props.addPerson(p)
   }
 
   return (
@@ -57,11 +60,15 @@ function People(props: PeopleProps) {
 }
 
 
-const stateProps = (state: rootStateType) => {
+const mapStateToProps = (state: rootStateType) => {
   return {
     count: state.count,
     people: state.people,
   }
 }
 
-export default connect(stateProps)(People)
+const mapDispatchToProps = {
+  addPerson,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(People)

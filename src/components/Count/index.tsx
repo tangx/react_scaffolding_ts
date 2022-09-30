@@ -11,6 +11,7 @@ import {
 /** 似乎这里的方法，只需要指定形参， 返回值只使用 void 就行。 */
 interface CountProps {
   count: ICount,
+  peopleCount: number,
   increment: (data: ICount) => void,
   incrementAsync: (data: ICount, timeout: number) => void,
 }
@@ -37,8 +38,8 @@ function Count(props: CountProps) {
 
   return (
     <div>
-      <h2>1. Count 组件</h2>
-      <h3>求和总数为: {props.count}</h3>
+      <h2>1. Count 组件: 求和总数为: {props.count}</h2>
+      <h3>People 组件总人数为: {props.peopleCount}</h3>
       <button onClick={increment}>再 +1</button>
       <button onClick={incrementOdd}>和为奇数 +11</button>
       <button onClick={incrementAsync}>延迟 +1</button>
@@ -53,7 +54,8 @@ function Count(props: CountProps) {
 // 数值 state
 const stateProps = (state: rootStateType) => {
   return {
-    count: state.count
+    count: state.count,
+    peopleCount: state.people.length,
   }
 }
 // 方法 action

@@ -5,11 +5,11 @@ interface IAdmin {
   role: string
 }
 
-interface IState {
+interface IAdminState {
   admin: IAdmin
 }
 
-const initAdminState: IState = {
+const initAdminState: IAdminState = {
   admin: {
     id: 'admin123',
     name: 'admin',
@@ -17,7 +17,7 @@ const initAdminState: IState = {
   }
 }
 
-const admin = (state: IState = initAdminState, action: any) => {
+const admin = (state: IAdminState = initAdminState, action: any) => {
   return state
 }
 

@@ -4,11 +4,11 @@ interface IUser {
   nickname: string
 }
 
-interface IState {
+interface IUserState {
   user: IUser
 }
 
-const initUserState: IState = {
+const initUserState: IUserState = {
   user: {
     id: 'abc1231',
     name: "zhangsan",
@@ -16,7 +16,7 @@ const initUserState: IState = {
   }
 }
 
-const user = (state: IState = initUserState, action: any) => {
+const user = (state: IUserState = initUserState, action: any) => {
   return state
 }
 

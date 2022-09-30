@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Count from './components/Count';
+import People from './components/People';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       <hr />
       <Count />
       <hr />
+      <People />
     </div>
   );
 }

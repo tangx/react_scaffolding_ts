@@ -1,6 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default function Count() {
+function Count() {
   return (
     <div>
       <h2>1. Count 组件</h2>
@@ -11,3 +12,13 @@ export default function Count() {
     </div>
   )
 }
+
+
+const stateProps = () => {
+  return {}
+}
+const dispatchProps = {
+
+}
+
+export default connect(stateProps, dispatchProps)(Count)

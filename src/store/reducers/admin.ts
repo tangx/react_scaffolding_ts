@@ -1,5 +1,5 @@
 
-interface IAdmin {
+export interface IAdmin {
   id: string
   name: string
   role: string

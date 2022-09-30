@@ -12,14 +12,18 @@ interface IProps {
 
 class ClassConnect extends Component<IProps> {
   render() {
-    console.log("user=>", this.props.user);
-    console.log("user=>", this.props.admin);
+    // console.log("user=>", this.props.user);
+    // console.log("user=>", this.props.admin);
 
+    const { user, admin } = this.props
 
     return (
       <div>
         <h3>Class组件 + connect 函数</h3>
         ClassConnect...
+        <h4>用户: {user.id} - {user.name} - {user.nickname}</h4>
+        <h4>管理员: {admin.id} - {admin.name} - {admin.role}</h4>
+
       </div>
     )
   }

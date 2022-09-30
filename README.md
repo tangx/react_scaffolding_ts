@@ -15,6 +15,25 @@ $ yarn add redux-devtools-extension
 
 ## 使用 store
 
+### 0. 使用 `Provider` 包裹程序
+
+在 index.tsx 文件中， 使用 Provider 包裹 **根组件 `App`**
+
+```tsx
+import store from './store'
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>
+);
+```
+
 ### 1. 获取 store 中 state 的数据类型
 
 在 `store/index.ts` 文件中， 使用 `ReturnType<typeof reducers>` 获取 reducers 的类型。

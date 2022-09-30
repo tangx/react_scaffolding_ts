@@ -18,7 +18,7 @@ const initAdminState: IState = {
 }
 
 const admin = (state: IState = initAdminState, action: any) => {
-  return {}
+  return state
 }
 
 export default admin

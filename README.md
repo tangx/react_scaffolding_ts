@@ -2,6 +2,14 @@
 
 react-redux with typescript
 
+**项目地址:** https://github.com/tangx/react_scaffolding_ts/tree/react-redux-ts-people-and-count
+
+**使用方法**
+
+```bash 
+$ yarn install
+$ yarn start
+```
 
 ## 安装组件
 
@@ -232,3 +240,78 @@ interface IProps {
     })
   }
 ```
+
+## 使用 Redux hook
+
+可以直接在 **UI组件** 中使用 **Redux Hook** 操作 redex， 从而替代 **Redux Container 组件**。
+
+```tsx
+  // const selectXX = (state: rootStateType) => state.people
+  // const persons = useSelector(selectXX)
+  const people = useSelector((state: rootStateType) => state.people)
+  const count = useSelector((state: rootStateType) => state.count)
+
+  const dispatch = useDispatch()
+
+  const nameNode = createRef<HTMLInputElement>()
+  const ageNode = createRef<HTMLInputElement>()
+
+  const handleAddPerson = () => {
+
+    const name = nameNode.current!.value
+    const age = ageNode.current!.valueAsNumber
+
+    const p: IPerson = {
+      id: nanoid(),
+      name,
+      age,
+    }
+
+    dispatch(addPerson(p))
+  }
+```
+
+使用 hook 时， 常用组件
+
+1. **state 操作**: `useSelecter()`
+
+```tsx
+  // 分开写法
+  const selectXX = (state: rootStateType) => state.people
+  const persons = useSelector(selectXX)
+
+  // 合并写法
+  const people = useSelector((state: rootStateType) => state.people)
+```
+
+2. **action 操作**： 需要手工调用 `dispatch`。
+
+```tsx
+// 导入 action
+import { addPerson } from '../../redux/actions/people'
+
+function People(props: PeopleProps) {
+// 导入 dispatch
+  const dispatch = useDispatch()
+
+  const nameNode = createRef<HTMLInputElement>()
+  const ageNode = createRef<HTMLInputElement>()
+
+  const handleAddPerson = () => {
+
+    const name = nameNode.current!.value
+    const age = ageNode.current!.valueAsNumber
+
+    const p: IPerson = {
+      id: nanoid(),
+      name,
+      age,
+    }
+
+// 手动 dispatch action
+    dispatch(addPerson(p))
+  }
+}
+```
+
+3. 更多 hook 用法， https://react-redux.js.org/api/hooks#useselector

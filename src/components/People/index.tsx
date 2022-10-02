@@ -27,10 +27,11 @@ function People(props: PeopleProps) {
   const people = useSelector((state: rootStateType) => state.people)
   const count = useSelector((state: rootStateType) => state.count)
 
+  const dispatch = useDispatch()
+
   const nameNode = createRef<HTMLInputElement>()
   const ageNode = createRef<HTMLInputElement>()
 
-  const dispatch = useDispatch()
   const handleAddPerson = () => {
 
     const name = nameNode.current!.value
